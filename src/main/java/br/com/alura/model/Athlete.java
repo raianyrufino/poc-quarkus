@@ -1,48 +1,41 @@
 package br.com.alura.model;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "athletes")
 public class Athlete {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String username;
-    private Integer resourceState;
     private String firstname;
     private String lastname;
     private String city;
     private String state;
     private String country;
     private String sex;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private Integer badgeTypeId;
     private Double weight;
-    private String profileMedium;
-    private String profile;
-    private Object friend;
+
 
     public Athlete() {
     }
 
-    public Athlete(Long id, String username, Integer resourceState, String firstname, String lastname,
-                   String bio, String city, String state, String country, String sex, Boolean premium,
-                   Boolean summit, LocalDateTime createdAt, LocalDateTime updatedAt, Integer badgeTypeId,
-                   Double weight, String profileMedium, String profile, Object friend, Object follower) {
+    public Athlete(Long id, String username, String firstname, String lastname,
+                   String city, String state, String country, String sex,
+                   Double weight) {
         this.id = id;
         this.username = username;
-        this.resourceState = resourceState;
         this.firstname = firstname;
         this.lastname = lastname;
         this.city = city;
         this.state = state;
         this.country = country;
         this.sex = sex;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.badgeTypeId = badgeTypeId;
         this.weight = weight;
-        this.profileMedium = profileMedium;
-        this.profile = profile;
-        this.friend = friend;
     }
 
     public Long getId() {
@@ -59,14 +52,6 @@ public class Athlete {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public Integer getResourceState() {
-        return resourceState;
-    }
-
-    public void setResourceState(Integer resourceState) {
-        this.resourceState = resourceState;
     }
 
     public String getFirstname() {
@@ -117,30 +102,6 @@ public class Athlete {
         this.sex = sex;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Integer getBadgeTypeId() {
-        return badgeTypeId;
-    }
-
-    public void setBadgeTypeId(Integer badgeTypeId) {
-        this.badgeTypeId = badgeTypeId;
-    }
-
     public Double getWeight() {
         return weight;
     }
@@ -149,27 +110,18 @@ public class Athlete {
         this.weight = weight;
     }
 
-    public String getProfileMedium() {
-        return profileMedium;
-    }
-
-    public void setProfileMedium(String profileMedium) {
-        this.profileMedium = profileMedium;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
-
-    public Object getFriend() {
-        return friend;
-    }
-
-    public void setFriend(Object friend) {
-        this.friend = friend;
+    @Override
+    public String toString() {
+        return "Athlete{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", sex='" + sex + '\'' +
+                ", weight=" + weight +
+                '}';
     }
 }
